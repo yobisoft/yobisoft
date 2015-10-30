@@ -5,6 +5,7 @@ namespace Yobisoft.Core.Time.RangeConverters
     /// <summary>
     /// Absolute time range converter 
     /// </summary>
+    //[NotifyPropertyChanged]
     public sealed class Absolute
         : RangeConverter 
     {

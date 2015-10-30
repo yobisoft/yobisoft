@@ -1,0 +1,31 @@
+﻿<time:RangeConverter 
+    x:Class="Yobisoft.UI.Time.RangeConverters.Relative"
+    x:TypeArguments="model:Relative"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+    xmlns:local="clr-namespace:Yobisoft.UI.Time.RangeConverters"
+    xmlns:time="clr-namespace:Yobisoft.UI.Time"
+    xmlns:model="clr-namespace:Yobisoft.Core.Time.RangeConverters;assembly=Yobisoft.Core"
+    mc:Ignorable="d" 
+    d:DesignHeight="25" 
+    d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Yobisoft.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <Label Content="Get last"/>
+        <TextBox Text="{Binding Converter.Offset}"/>
+        <ComboBox ItemsSource="{Binding Items}" 
+                  SelectedValuePath="Key" 
+                  DisplayMemberPath="Value" 
+                  SelectedValue="{Binding DefaultValue, Mode=OneWay}" />        
+    </StackPanel>
+</time:RangeConverter>
