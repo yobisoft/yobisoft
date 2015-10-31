@@ -18,9 +18,9 @@ namespace Yobisoft.Core.Time.RangeConverters
             Converters = new Dictionary<TimeOffset, Converter<DateTime, DateTime>>()
             {
                 { TimeOffset.Milliseconds, time => time.ChangeMilliseconds(Offset) },
-                { TimeOffset.Seconds, time => time.ChangeMilliseconds(Offset) },
-                { TimeOffset.Minutes, time => time.ChangeMilliseconds(Offset) },
-                { TimeOffset.Hours, time => time.ChangeMilliseconds(Offset) },
+                { TimeOffset.Seconds, time => time.ChangeSeconds(Offset) },
+                { TimeOffset.Minutes, time => time.ChangeMinutes(Offset) },
+                { TimeOffset.Hours, time => time.ChangeHours(Offset) },
                 { TimeOffset.Days, time => time.ChangeDays(Offset) },
                 { TimeOffset.Months, time => time.ChangeMonths(Offset) },
                 { TimeOffset.Years, time => time.ChangeYears(Offset) },
