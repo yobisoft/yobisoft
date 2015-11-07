@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B957522-CEC5-418B-9A43-B3A094DFC810}</ProjectGuid>
+    <ProjectGuid>{BE8EC66B-4627-4B63-82C0-83074C151657}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yobisoft.Core</RootNamespace>
-    <AssemblyName>Yobisoft.Core</AssemblyName>
+    <RootNamespace>Yobisoft.IO</RootNamespace>
+    <AssemblyName>Yobisoft.IO</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -37,21 +37,21 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\Array.cs" />
-    <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Modbus\ExceptionCode.cs" />
+    <Compile Include="Modbus\Function.cs" />
+    <Compile Include="Modbus\Packet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Time\RangeConverter.cs" />
-    <Compile Include="Time\ITimeRange.cs" />
-    <Compile Include="Time\ITimeRangeConverter.cs" />
-    <Compile Include="Time\RangeConverters\Absolute.cs" />
-    <Compile Include="Time\RangeConverters\Overall.cs" />
-    <Compile Include="Time\RangeConverters\Relative.cs" />
-    <Compile Include="Time\RangeConverters\StartsFrom.cs" />
-    <Compile Include="Time\OffsetRangeConverter.cs" />
-    <Compile Include="Time\TimeOffset.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Yobisoft.Core\Yobisoft.Core.csproj">
+      <Project>{0b957522-cec5-418b-9a43-b3a094dfc810}</Project>
+      <Name>Yobisoft.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yobisoft.UI", "Yobisoft.UI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yobisoft.Tests", "Yobisoft.Tests\Yobisoft.Tests.csproj", "{82DE2EF6-A315-4CF4-A37F-3A1656F53B7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yobisoft.IO", "Yobisoft.IO\Yobisoft.IO.csproj", "{BE8EC66B-4627-4B63-82C0-83074C151657}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{82DE2EF6-A315-4CF4-A37F-3A1656F53B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DE2EF6-A315-4CF4-A37F-3A1656F53B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DE2EF6-A315-4CF4-A37F-3A1656F53B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8EC66B-4627-4B63-82C0-83074C151657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8EC66B-4627-4B63-82C0-83074C151657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8EC66B-4627-4B63-82C0-83074C151657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8EC66B-4627-4B63-82C0-83074C151657}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

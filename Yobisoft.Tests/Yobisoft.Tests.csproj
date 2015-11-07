@@ -53,7 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Core\Time\RangeConverter.cs" />
+    <Compile Include="Core\Extension\ArrayTest.cs" />
+    <Compile Include="Core\Time\RangeConverterTest.cs" />
+    <Compile Include="IO\Modbus\PacketTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,7 +63,12 @@
       <Project>{0b957522-cec5-418b-9a43-b3a094dfc810}</Project>
       <Name>Yobisoft.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yobisoft.IO\Yobisoft.IO.csproj">
+      <Project>{be8ec66b-4627-4b63-82c0-83074c151657}</Project>
+      <Name>Yobisoft.IO</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

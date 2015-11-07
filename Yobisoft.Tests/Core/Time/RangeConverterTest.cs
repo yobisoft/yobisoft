@@ -8,7 +8,7 @@ using System.Reflection;
 namespace Yobisoft.Tests.Core.Time
 {
     [TestClass]
-    public class RangeConverter
+    public class RangeConverterTest
     {
         class TimeRangeImpl : ITimeRange
         {
