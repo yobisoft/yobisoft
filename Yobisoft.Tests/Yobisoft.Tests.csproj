@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Core\Extension\ArrayTest.cs" />
     <Compile Include="Core\Time\RangeConverterTest.cs" />
+    <Compile Include="IO\Modbus\CrcTest.cs" />
     <Compile Include="IO\Modbus\PacketTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

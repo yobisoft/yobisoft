@@ -141,48 +141,34 @@ namespace Yobisoft.IO.Modbus
         }
 
         /// <summary>
-        /// Gets higher byte of a register
+        /// Gets bytes of a register in modbus order
         /// </summary>
         /// <param name="value">Register value</param>
-        /// <returns>Higher byte of a register</returns>
-        public static byte Hi(ushort value) => (byte)((value >> 8) & 0xFF);
-
-        /// <summary>
-        /// Gets lower byte of a register
-        /// </summary>
-        /// <param name="value">Register value</param>
-        /// <returns>Lower byte of a register</returns>
-        public static byte Lo(ushort value) => (byte)(value & 0xFF);
-
-        /// <summary>
-        /// Gets bytes of a register in MODBUS order
-        /// </summary>
-        /// <param name="value">Register value</param>
-        /// <returns>Bytes of a register in MODBUS order</returns>
+        /// <returns>Bytes of a register in modbus order</returns>
         public static IEnumerable<byte> RegisterConverter(ushort value)
         {
-            yield return Hi(value);
-            yield return Lo(value);
+            yield return Helper.Hi(value);
+            yield return Helper.Lo(value);
         }
 
         /// <summary>
-        /// Gets bytes of registers in MODBUS order
+        /// Gets bytes of registers in modbus order
         /// </summary>
         /// <param name="values">Registers' values</param>
-        /// <returns>Bytes of a registers in MODBUS order</returns>
+        /// <returns>Bytes of a registers in modbus order</returns>
         public static IEnumerable<byte> DataConverter(ushort[] values)
         {
             return values.SelectMany(RegisterConverter);
         }
 
         /// <summary>
-        /// Gets bytes of coils in MODBUS order
+        /// Gets bytes of coils in modbus order
         /// </summary>
         /// <remarks>
         /// Each array item represents one coil value. Zero values are converted to 0. Non-zero values are converted to 1.
         /// </remarks>
         /// <param name="values">Coils' values</param>
-        /// <returns>Bytes of coils in MODBUS order</returns>
+        /// <returns>Bytes of coils in modbus order</returns>
         public static IEnumerable<byte> CoilDataConverter(ushort[] values)
         {
             byte result = 0;

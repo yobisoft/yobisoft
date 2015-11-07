@@ -2,6 +2,7 @@
 using System.Linq;
 
 using TestClass = Yobisoft.IO.Modbus.Packet;
+using Helper = Yobisoft.IO.Helper;
 using Function = Yobisoft.IO.Modbus.Function;
 using ExceptionCode = Yobisoft.IO.Modbus.ExceptionCode;
 
@@ -69,10 +70,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon = 
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(coilCount)
-                , TestClass.Lo(coilCount) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(coilCount)
+                , Helper.Lo(coilCount) };
             TestClass test = TestClass.CreateReadRequest(slaveAddress, function, address, coilCount);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -102,10 +103,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(coilCount)
-                , TestClass.Lo(coilCount) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(coilCount)
+                , Helper.Lo(coilCount) };
             TestClass test = TestClass.CreateReadRequest(slaveAddress, function, address, coilCount);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -135,10 +136,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(regCount)
-                , TestClass.Lo(regCount) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(regCount)
+                , Helper.Lo(regCount) };
             TestClass test = TestClass.CreateReadRequest(slaveAddress, function, address, regCount);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -168,10 +169,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(regCount)
-                , TestClass.Lo(regCount) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(regCount)
+                , Helper.Lo(regCount) };
             TestClass test = TestClass.CreateReadRequest(slaveAddress, function, address, regCount);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -225,10 +226,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(subfunction)
-                , TestClass.Lo(subfunction)
-                , TestClass.Hi(data)
-                , TestClass.Lo(data) };
+                , Helper.Hi(subfunction)
+                , Helper.Lo(subfunction)
+                , Helper.Hi(data)
+                , Helper.Lo(data) };
             TestClass test = TestClass.CreateReadRequest(slaveAddress, function, subfunction, data);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -309,10 +310,10 @@ namespace Yobisoft.Tests.IO.Modbus
                 byte[] ethalon =
                     { slaveAddress
                     , (byte)function
-                    , TestClass.Hi(address)
-                    , TestClass.Lo(address)
-                    , TestClass.Hi(value)
-                    , TestClass.Lo(value) };
+                    , Helper.Hi(address)
+                    , Helper.Lo(address)
+                    , Helper.Hi(value)
+                    , Helper.Lo(value) };
                 TestClass test = TestClass.CreateWriteRequest(slaveAddress, function, address, value);
                 Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
             }
@@ -329,10 +330,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(count)
-                , TestClass.Lo(count) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(count)
+                , Helper.Lo(count) };
             TestClass test = TestClass.CreateResponse(slaveAddress, function, address, count);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -347,10 +348,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(value)
-                , TestClass.Lo(value) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(value)
+                , Helper.Lo(value) };
             TestClass test = TestClass.CreateWriteRequest(slaveAddress, function, address, value);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -365,10 +366,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(count)
-                , TestClass.Lo(count) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(count)
+                , Helper.Lo(count) };
             TestClass test = TestClass.CreateResponse(slaveAddress, function, address, count);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -383,10 +384,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(3)
-                , TestClass.Lo(3)
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(3)
+                , Helper.Lo(3)
                 , 1
                 , 0x05 };
             TestClass test = TestClass.CreateWriteRequest(slaveAddress, function, address, values);
@@ -404,10 +405,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(count)
-                , TestClass.Lo(count) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(count)
+                , Helper.Lo(count) };
             TestClass test = TestClass.CreateResponse(slaveAddress, function, address, count);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }
@@ -422,17 +423,17 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi((ushort)values.Length)
-                , TestClass.Lo((ushort)values.Length)
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi((ushort)values.Length)
+                , Helper.Lo((ushort)values.Length)
                 , (byte)(values.Length * 2)
-                , TestClass.Hi(values[0])
-                , TestClass.Lo(values[0])
-                , TestClass.Hi(values[1])
-                , TestClass.Lo(values[1])
-                , TestClass.Hi(values[2])
-                , TestClass.Lo(values[2])
+                , Helper.Hi(values[0])
+                , Helper.Lo(values[0])
+                , Helper.Hi(values[1])
+                , Helper.Lo(values[1])
+                , Helper.Hi(values[2])
+                , Helper.Lo(values[2])
             };
             TestClass test = TestClass.CreateWriteRequest(slaveAddress, function, address, values);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
@@ -449,10 +450,10 @@ namespace Yobisoft.Tests.IO.Modbus
             byte[] ethalon =
                 { slaveAddress
                 , (byte)function
-                , TestClass.Hi(address)
-                , TestClass.Lo(address)
-                , TestClass.Hi(count)
-                , TestClass.Lo(count) };
+                , Helper.Hi(address)
+                , Helper.Lo(address)
+                , Helper.Hi(count)
+                , Helper.Lo(count) };
             TestClass test = TestClass.CreateResponse(slaveAddress, function, address, count);
             Assert.IsTrue(ethalon.SequenceEqual(test.Bytes));
         }

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Modbus\Crc.cs" />
     <Compile Include="Modbus\ExceptionCode.cs" />
     <Compile Include="Modbus\Function.cs" />
     <Compile Include="Modbus\Packet.cs" />
