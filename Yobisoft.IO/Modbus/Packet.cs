@@ -9,6 +9,7 @@ namespace Yobisoft.IO.Modbus
     /// Modbus packet
     /// </summary>
     public sealed class Packet
+        : IPacket
     {
         /// <summary>
         /// Coil on status constant
@@ -19,6 +20,11 @@ namespace Yobisoft.IO.Modbus
         /// Coil off status constant
         /// </summary>
         public const ushort CoilOff = 0x0000;
+
+        /// <summary>
+        /// Maximum size of modbus packet
+        /// </summary>
+        public const int MaxPacketSize = 254;
 
         /// <summary>
         /// Get packet's bytes
@@ -206,6 +212,78 @@ namespace Yobisoft.IO.Modbus
         {
             return (byte)((values.Length + 7) / 8);
         }
+
+        /// <summary>
+        /// Gets expected response size for request in bytes
+        /// </summary>
+        /// <param name="request">Request</param>
+        /// <returns>Expected response size for request in bytes. 
+        /// Returns 0 if no answer required. 
+        /// Returns MaxPacketSize if size of answer is not predicatble.
+        /// </returns>
+        internal static int GetResponseSize(Packet request)
+        {
+            int result;
+            Converter<byte[], bool> check;
+            if (ResponseSizeCheckData.TryGetValue(request.FunctionNumber, out check))
+            {
+                if (check(request._packetBytes))
+                {
+                    if (request.Device == 0) result = 0;
+                    else
+                    {
+                        Converter<byte[], int> convert;
+                        if (ResponseSizeConvertData.TryGetValue(request.FunctionNumber, out convert))
+                            result = convert(request._packetBytes);
+                        else
+                            throw new NotImplementedException();
+                    }
+                }
+                else
+                    throw new ArgumentException(nameof(request));
+            }
+            else
+                throw new ArgumentException(nameof(request));
+            return result;
+        }
+
+        private static readonly Dictionary<byte, Converter<byte[], bool>> ResponseSizeCheckData
+            = new Dictionary<byte, Converter<byte[], bool>>()
+        {
+                // read functions
+            { (byte)Function.ReadCoilStatus       , packet => packet.Length > 5 },
+            { (byte)Function.ReadInputStatus      , packet => packet.Length > 5 },
+            { (byte)Function.ReadHoldingRegisters , packet => packet.Length > 5 },
+            { (byte)Function.ReadInputRegisters   , packet => packet.Length > 5 },
+            { (byte)Function.ReadExceptionStatus  , packet => packet.Length > 2 },
+            { (byte)Function.Diagnostic           , packet => packet.Length > 2 },
+            { (byte)Function.FetchCommEventCtr    , packet => packet.Length > 2 },
+            { (byte)Function.FetchCommEventLog    , packet => packet.Length > 2 },
+                // write functions
+            { (byte)Function.ForceSingleCoil      , packet => packet.Length > 2 },
+            { (byte)Function.PresetSingleRegister , packet => packet.Length > 2 },
+            { (byte)Function.ForceMultipleCoils   , packet => packet.Length > 2 },
+            { (byte)Function.PresetMultipleRegs   , packet => packet.Length > 2 },
+        };
+
+        private static readonly Dictionary<byte, Converter<byte[], int>> ResponseSizeConvertData
+            = new Dictionary<byte, Converter<byte[], int>>()
+        {
+                // read functions
+            { (byte)Function.ReadCoilStatus       , packet => 3 + (Helper.Word(packet[4], packet[5])+7)/8 },
+            { (byte)Function.ReadInputStatus      , packet => 3 + (Helper.Word(packet[4], packet[5])+7)/8 },
+            { (byte)Function.ReadHoldingRegisters , packet => 3 + (Helper.Word(packet[4], packet[5])*2) },
+            { (byte)Function.ReadInputRegisters   , packet => 3 + (Helper.Word(packet[4], packet[5])*2) },
+            { (byte)Function.ReadExceptionStatus  , packet => 3 },
+            { (byte)Function.Diagnostic           , packet => 6 },
+            { (byte)Function.FetchCommEventCtr    , packet => 6 },
+            { (byte)Function.FetchCommEventLog    , packet => MaxPacketSize },
+                // write functions
+            { (byte)Function.ForceSingleCoil      , packet => 6 },
+            { (byte)Function.PresetSingleRegister , packet => 6 },
+            { (byte)Function.ForceMultipleCoils   , packet => 6 },
+            { (byte)Function.PresetMultipleRegs   , packet => 6 },
+        };
 
         private static readonly Dictionary<Function, Converter<ushort[], bool>> RequestCheckData 
             = new Dictionary<Function, Converter<ushort[], bool>>()

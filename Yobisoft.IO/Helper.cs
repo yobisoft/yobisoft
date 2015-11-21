@@ -15,5 +15,13 @@
         /// <param name="value">Register value</param>
         /// <returns>Lower byte of a register</returns>
         public static byte Lo(ushort value) => (byte)(value & 0xFF);
+
+        public static ushort Word(byte hi, byte lo)
+        {
+            ushort result = hi;
+            result <<= 8;
+            result |= lo;
+            return result;
+        }
     }
 }

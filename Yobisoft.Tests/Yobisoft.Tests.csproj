@@ -58,6 +58,7 @@
     <Compile Include="IO\Modbus\CrcTest.cs" />
     <Compile Include="IO\Modbus\PacketTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Yobisoft.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yobisoft.Core\Yobisoft.Core.csproj">

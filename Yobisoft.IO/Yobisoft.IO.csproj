@@ -42,10 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper.cs" />
+    <Compile Include="IPacket.cs" />
+    <Compile Include="IMaster.cs" />
     <Compile Include="Modbus\Crc.cs" />
     <Compile Include="Modbus\ExceptionCode.cs" />
     <Compile Include="Modbus\Function.cs" />
+    <Compile Include="Modbus\ModbusType.cs" />
     <Compile Include="Modbus\Packet.cs" />
+    <Compile Include="Modbus\Master.cs" />
+    <Compile Include="Modbus\Implementation\Master\Rtu.cs" />
+    <Compile Include="IPort.cs" />
+    <Compile Include="Ports\Implementation\Serial.cs" />
+    <Compile Include="Ports\Port.cs" />
+    <Compile Include="Ports\PortType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
